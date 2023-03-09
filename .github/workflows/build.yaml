@@ -59,4 +59,5 @@ jobs:
     
     - name: Terraform provision AWS resources
       run: |
+        terraform init
         terraform destroy --auto-approve
