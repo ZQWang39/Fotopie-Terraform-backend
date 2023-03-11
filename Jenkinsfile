@@ -11,6 +11,12 @@ pipeline {
 
   stages {
 
+    stage('Terraform init'){
+        steps {
+        sh 'terraform init'
+      }
+    }
+
     stage('Provisioning infrastructure'){
         when {
             expression {
@@ -18,7 +24,6 @@ pipeline {
             }
         }
       steps {
-        sh 'terraform init'
         sh 'terraform apply --auto-approve'
       }
 
