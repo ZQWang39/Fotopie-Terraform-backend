@@ -12,13 +12,13 @@ variable "task_definition_family_name" {
 
 variable "image_name" {
     description = "Image name for the task definition to run in this ECS cluster"
-    default = "nginx"
+    default = "fotopie"
   
 }
 
-variable "image_arn" {
+variable "image_uri" {
     description = "arn for the image"
-    default = "public.ecr.aws/nginx/nginx:perl"
+    default = "206053821616.dkr.ecr.ap-southeast-2.amazonaws.com/fotopie:latest"
 }
 
 variable "irequires_compatibilities" {
@@ -38,7 +38,7 @@ variable "fargate_memory" {
 
 variable "app_port" {
   description = "portexposed on the docker image"
-  default     = 80
+  default     = 9090
   
 }
 
@@ -62,7 +62,7 @@ variable "desired_tasks" {
 
 variable "container_name" {
   description = "container name of the image"
-  default     = "nginx"
+  default     = "fotopie"
   
 }
 
@@ -71,18 +71,6 @@ variable "container_port" {
   default     = 80
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 variable "default_vpc_id" {
     description = "ID of default VPC"

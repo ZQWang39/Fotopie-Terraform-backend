@@ -2,18 +2,18 @@ module "ecr" {
   source  = "terraform-aws-modules/ecr/aws"
   version = "1.6.0"
 
-  repository_name = "fotopie-terraform"
+  repository_name = "fotopie"
 
   repository_lifecycle_policy = jsonencode({
     rules = [
       {
         rulePriority = 1,
-        description  = "Keep last 15 images",
+        description  = "Keep last 5 images",
         selection = {
           tagStatus     = "tagged",
           tagPrefixList = ["v"],
           countType     = "imageCountMoreThan",
-          countNumber   = 15
+          countNumber   = 5
         },
         action = {
           type = "expire"

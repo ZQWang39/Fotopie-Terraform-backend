@@ -33,7 +33,7 @@ resource "aws_ecs_task_definition" "fotopie_task" {
   container_definitions = jsonencode([
     {
       name      = var.image_name
-      image     = var.image_arn
+      image     = var.image_uri
       cpu       = var.fargate_cpu
       memory    = var.fargate_memory
       essential = true
