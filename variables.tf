@@ -68,7 +68,7 @@ variable "container_name" {
 
 variable "container_port" {
   description = "port number for the container"
-  default     = 80
+  default     = 9090
   
 }
 
