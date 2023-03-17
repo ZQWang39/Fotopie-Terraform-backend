@@ -1,22 +1,3 @@
-
-terraform {
-  required_version = ">= 0.12"
-  required_providers {
-     aws = {
-      source = "hashicorp/aws"
-      version = "4.57.1"
-    }
-  }
-  backend "s3" {
-        bucket = "fotopie-backend-state-file"
-        key = "terraform.tfstate"
-        region = "ap-southeast-2"
-    }
-}
-
-provider "aws" {
-}
-
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "4.1.3"
@@ -84,7 +65,7 @@ resource "aws_ecs_service" "fotopie_service" {
 
   network_configuration {
     security_groups  = [module.ecs-security-group.security_group_id]
-    subnets          = var.default_subnets
+    subnets          = module.vpc.public_subnets
     assign_public_ip = true
   }
 

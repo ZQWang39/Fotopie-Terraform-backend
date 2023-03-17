@@ -1,3 +1,34 @@
+
+variable "fotopie_vpc" {
+    description = "VPC name for FotoPie dev environment"
+    default = "fotopie-vpc-dev"
+}
+
+variable "vpc_cidr" {
+    description = "CIDR block for vpc"
+    default = "172.10.0.0/16"
+}
+
+variable "private_subnets_cidr" {
+    description = "private subnets cidr blocks" 
+    default = ["172.10.1.0/24", "172.10.2.0/24", "172.10.3.0/24"]
+}
+
+variable "public_subnets_cidr" {
+    description = "public subnets cidr blocks" 
+    default = ["172.10.11.0/24", "172.10.12.0/24", "172.10.13.0/24"]
+}
+
+variable "fotopie_alb_sg" {
+    description = "Security group name for FotoPie backend ALB"
+    default = "fotopie_alb_sg"
+}
+
+variable "fotopie_ecs_service_sg" {
+    description = "Security group name for FotoPie backend ECS service/container"
+    default = "fotopie_ecs_service_sg"
+}
+
 variable "cluster_name" {
     description = "ECS cluster name"
     default = "FotoPie-with-Fargate"
@@ -6,13 +37,13 @@ variable "cluster_name" {
 
 variable "task_definition_family_name" {
     description = "task definition name"
-    default = "fotopie_task"
+    default = "fotopie_backend_task"
   
 }
 
 variable "image_name" {
     description = "Image name for the task definition to run in this ECS cluster"
-    default = "fotopie"
+    default = "fotopie-backend"
   
 }
 
@@ -62,7 +93,7 @@ variable "desired_tasks" {
 
 variable "container_name" {
   description = "container name of the image"
-  default     = "fotopie"
+  default     = "fotopie-backend"
   
 }
 
@@ -72,13 +103,13 @@ variable "container_port" {
   
 }
 
-variable "default_vpc_id" {
-    description = "ID of default VPC"
-    default = "vpc-04936b1b1afaf216b"
+# variable "default_vpc_id" {
+#     description = "ID of default VPC"
+#     default = "vpc-04936b1b1afaf216b"
   
-}
+# }
 
-variable "default_subnets" {
-   description = "Default subnets of default VPC"
-   default = ["subnet-03f4255fcf5fc7182", "subnet-036a34e6087ab39c9", "subnet-0c0a830e181655379"]
-}
+# variable "default_subnets" {
+#    description = "Default subnets of default VPC"
+#    default = ["subnet-03f4255fcf5fc7182", "subnet-036a34e6087ab39c9", "subnet-0c0a830e181655379"]
+# }
