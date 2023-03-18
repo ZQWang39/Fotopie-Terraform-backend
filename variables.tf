@@ -103,13 +103,7 @@ variable "container_port" {
   
 }
 
-# variable "default_vpc_id" {
-#     description = "ID of default VPC"
-#     default = "vpc-04936b1b1afaf216b"
-  
-# }
-
-# variable "default_subnets" {
-#    description = "Default subnets of default VPC"
-#    default = ["subnet-03f4255fcf5fc7182", "subnet-036a34e6087ab39c9", "subnet-0c0a830e181655379"]
-# }
+variable "my_ip_address" {
+  description = "My local IP adress"
+  default     = "149.167.135.253/32"
+}
