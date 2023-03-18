@@ -3,7 +3,7 @@ terraform {
   required_providers {
      aws = {
       source = "hashicorp/aws"
-      version = "4.57.1"
+      version = "4.59.0"
     }
   }
   backend "s3" {
@@ -14,6 +14,7 @@ terraform {
 }
 
 provider "aws" {
+     
 }
 #Filter the azs
 data "aws_availability_zones" "azs"{
