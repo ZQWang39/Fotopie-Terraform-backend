@@ -17,10 +17,10 @@ module "managed-service-grafana" {
   notification_destinations = ["SNS"]
 
   role_associations = {
-    "ADMIN_GROUP" = {
+    "ADMIN" = {
       "group_ids" = ["24685468-f0e1-70ef-04ef-d4c7172689b9"]
     }
-    "ADMIN_USER" = {
+    "ADMIN" = {
       "user_ids" = ["a4d894f8-60f1-7020-0df7-8c417d67d35d"]
     }
    
