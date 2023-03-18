@@ -8,6 +8,7 @@ module "managed-service-grafana" {
   account_access_type       = "CURRENT_ACCOUNT"
   authentication_providers  = ["AWS_SSO"]
   permission_type           = "SERVICE_MANAGED"
+  associate_license         = "true"
   vpc_configuration         = {
         security_group_ids = [module.grafana-security-group.security_group_id]
         subnet_ids         = module.vpc.private_subnets
