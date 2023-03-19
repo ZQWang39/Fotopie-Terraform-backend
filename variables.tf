@@ -107,3 +107,13 @@ variable "my_ip_address" {
   description = "My local IP adress"
   default     = "149.167.135.253/32"
 }
+
+variable "aws_group_id" {
+  description = "Group id for aws sso, IAM Identity Center (successor to AWS Single Sign-On). Manage workforce access to multiple AWS accounts and cloud applications."
+  default     = "24685468-f0e1-70ef-04ef-d4c7172689b9"
+}
+
+variable "aws_user_id" {
+  description = "user id for aws SSO."
+  default     = "a4d894f8-60f1-7020-0df7-8c417d67d35d"
+}
