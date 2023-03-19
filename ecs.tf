@@ -62,6 +62,7 @@ resource "aws_ecs_service" "fotopie_service" {
   task_definition = aws_ecs_task_definition.fotopie_task.arn
   launch_type     = var.service_launch_type
   desired_count   = var.desired_tasks
+  force_new_deployment = true
 
   network_configuration {
     security_groups  = [module.ecs-security-group.security_group_id]
