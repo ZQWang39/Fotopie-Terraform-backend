@@ -7,7 +7,20 @@ module "eks" {
 
   vpc_id = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
+  cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
+
+  #  Fargate Profile(s)
+ fargate_profiles = [
+    {
+      name = "nginx" // fargate name
+      selectors = [
+        {
+          namespace = "nginx-demo"
+        }
+      ]
+    }
+ ]
 
   # eks_managed_node_groups = {
   #   dev = {
