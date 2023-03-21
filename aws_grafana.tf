@@ -18,10 +18,10 @@ module "managed-service-grafana" {
 
   role_associations = {
     "ADMIN" = {
-      "group_ids" = [var.aws_group_id]
+      "group_ids" = var.aws_group_id
     }
     "ADMIN" = {
-      "user_ids" = [var.aws_user_id]
+      "user_ids" = var.aws_user_id
     }
    
   }
