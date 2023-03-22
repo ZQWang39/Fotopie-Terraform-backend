@@ -21,6 +21,36 @@ resource "aws_iam_role" "ecs_task_execution_role" {
   })
 }
 
+resource "aws_iam_policy" "ecr_policy" {
+  name = "ecr-policy"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = [
+          "ecr:GetAuthorizationToken",
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:GetRepositoryPolicy",
+          "ecr:DescribeRepositories",
+          "ecr:ListImages",
+          "ecr:DescribeImages",
+          "ecr:BatchGetImage",
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "ecr_policy_attachment" {
+  policy_arn = aws_iam_policy.ecr_policy.arn
+  role       = aws_iam_role.ecs_task_execution_role.name
+}
+
+
 
 resource "aws_ecs_task_definition" "fotopie_task" {
   family = var.task_definition_family_name
