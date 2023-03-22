@@ -16,13 +16,13 @@ module "managed-service-grafana" {
   data_sources              = ["AMAZON_OPENSEARCH_SERVICE", "ATHENA", "CLOUDWATCH", "REDSHIFT", "SITEWISE", "TIMESTREAM", "PROMETHEUS", "XRAY"]
   notification_destinations = ["SNS"]
 
-  role_associations = {
-    "ADMIN" = {
-      "group_ids" = var.aws_group_id
-    }
-    "ADMIN" = {
-      "user_ids" = var.aws_user_id
-    }
+  # role_associations = {
+  #   "ADMIN" = {
+  #     "group_ids" = var.aws_group_id
+  #   }
+  #   "ADMIN" = {
+  #     "user_ids" = var.aws_user_id
+  #   }
    
-  }
+  # }
 }
