@@ -1,26 +1,3 @@
-terraform {
-  required_version = ">= 0.12"
-  required_providers {
-     aws = {
-      source = "hashicorp/aws"
-      version = "4.59.0"
-    }
-  }
-  backend "s3" {
-        bucket = "fotopie-statefile-backend"
-        key = "terraform.tfstate"
-        region = "ap-southeast-2"
-    }
-}
-
-provider "aws" {
-     
-}
-#Filter the azs
-data "aws_availability_zones" "azs"{
-
-}
-
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
@@ -35,6 +12,7 @@ module "vpc" {
 
   create_igw = true
   enable_nat_gateway = true
+  single_nat_gateway = true
   enable_dns_hostnames = true
   enable_dns_support = true
 
