@@ -5,10 +5,27 @@ module "ecs" {
   cluster_name = var.cluster_name
 }
 
+resource "aws_iam_role" "ecs_task_execution_role" {
+  name = "ecs-task-execution-role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "ecs-tasks.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+
 resource "aws_ecs_task_definition" "fotopie_task" {
   family = var.task_definition_family_name
   requires_compatibilities = var.irequires_compatibilities
-  # execution_role_arn = "arn:aws:iam::206053821616:role/ecsTaskExecutionRole"
+  execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
@@ -32,29 +49,7 @@ resource "aws_ecs_task_definition" "fotopie_task" {
     operating_system_family = "LINUX"
     cpu_architecture        = "X86_64"
   }
-  # volume {
-  #   name      = "service-storage"
-  #   host_path = "/ecs/service-storage"
-  # }
-
-  # placement_constraints {
-  #   type       = "memberOf"
-  #   expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
-  # }
 }
-
-# data "aws_subnets" "default" {
-#    filter {
-#     name = "vpc-id"
-#     values = [var.default_vpc_id]
-#   }
-# }
-
-
-
-# output "subnet_ids" {
-#   value = data.aws_subnets.default.ids
-# }
 
 resource "aws_ecs_service" "fotopie_service" {
   name            = var.ecs_service_name
