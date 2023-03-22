@@ -49,7 +49,7 @@ variable "image_name" {
 
 variable "image_uri" {
     description = "arn for the image"
-    default = "206053821616.dkr.ecr.ap-southeast-2.amazonaws.com/fotopie:latest"
+    default = "123436089261.dkr.ecr.ap-southeast-2.amazonaws.com/fotopie:latest"
 }
 
 variable "irequires_compatibilities" {
