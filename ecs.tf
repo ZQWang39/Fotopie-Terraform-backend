@@ -8,7 +8,7 @@ module "ecs" {
 resource "aws_ecs_task_definition" "fotopie_task" {
   family = var.task_definition_family_name
   requires_compatibilities = var.irequires_compatibilities
-  execution_role_arn = "arn:aws:iam::206053821616:role/ecsTaskExecutionRole"
+  # execution_role_arn = "arn:aws:iam::206053821616:role/ecsTaskExecutionRole"
   network_mode             = "awsvpc"
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
