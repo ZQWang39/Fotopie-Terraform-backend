@@ -110,10 +110,10 @@ variable "my_ip_address" {
 
 variable "aws_group_id" {
   description = "Group id for aws sso, IAM Identity Center (successor to AWS Single Sign-On). Manage workforce access to multiple AWS accounts and cloud applications."
-  default     = ["24685468-f0e1-70ef-04ef-d4c7172689b9"]
+  default     = ["94684488-4061-7095-cfb4-efb7e6011f89"]
 }
 
 variable "aws_user_id" {
   description = "user id for aws SSO."
-  default     = ["a4d894f8-60f1-7020-0df7-8c417d67d35d"]
+  default     = ["0458d4e8-d071-7083-8bf6-c4ea41f8c4e8"]
 }
