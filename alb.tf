@@ -5,7 +5,7 @@ resource "aws_lb" "fotopie_alb" {
   security_groups    = [module.alb-security-group.security_group_id]
   subnets            = module.vpc.public_subnets
 
-  enable_deletion_protection = false
+  enable_deletion_protection = true
   tags = {
     Environment = "dev"
   }
