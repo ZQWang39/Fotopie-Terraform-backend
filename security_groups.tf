@@ -26,6 +26,9 @@ module "alb-security-group" {
       ipv6_cidr_blocks = "::/0"
    }
   ]
+  tags = {
+    Environment = "dev"
+  }
 }
 
 
@@ -56,6 +59,9 @@ module "ecs-security-group" {
       ipv6_cidr_blocks = "::/0"
    }
   ]
+  tags = {
+    Environment = "dev"
+  }
 }
 
 module "grafana-security-group" {
@@ -100,4 +106,7 @@ module "grafana-security-group" {
       ipv6_cidr_blocks = "::/0"
    }
   ]
+  tags = {
+    Environment = "dev"
+  }
 }

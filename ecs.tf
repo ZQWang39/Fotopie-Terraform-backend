@@ -3,6 +3,9 @@ module "ecs" {
   version = "4.1.3"
 
   cluster_name = var.cluster_name
+  tags = {
+    Environment = "dev"
+  }
 }
 
 resource "aws_iam_role" "ecs_task_execution_role" {
@@ -79,6 +82,9 @@ resource "aws_ecs_task_definition" "fotopie_task" {
     operating_system_family = "LINUX"
     cpu_architecture        = "X86_64"
   }
+  tags = {
+    Environment = "dev"
+  }
 }
 
 resource "aws_ecs_service" "fotopie_service" {
@@ -99,6 +105,9 @@ resource "aws_ecs_service" "fotopie_service" {
     target_group_arn = aws_lb_target_group.fotopie_target_group.arn
     container_name   = var.container_name
     container_port   = var.container_port
+  }
+  tags = {
+    Environment = "dev"
   }
 
 }

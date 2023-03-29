@@ -6,6 +6,9 @@ resource "aws_lb" "fotopie_alb" {
   subnets            = module.vpc.public_subnets
 
   enable_deletion_protection = false
+  tags = {
+    Environment = "dev"
+  }
 }
 
 resource "aws_lb_target_group" "fotopie_target_group" {
@@ -24,6 +27,9 @@ resource "aws_lb_target_group" "fotopie_target_group" {
     path                = "/api/user/"
     interval            = 20
   }
+  tags = {
+    Environment = "dev"
+  }
 }
 
 resource "aws_lb_listener" "front_end" {
@@ -34,5 +40,8 @@ resource "aws_lb_listener" "front_end" {
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.fotopie_target_group.arn
+  }
+  tags = {
+    Environment = "dev"
   }
 }

@@ -25,4 +25,7 @@ module "managed-service-grafana" {
     }
    
   }
+  tags = {
+    Environment = "dev"
+  }
 }
