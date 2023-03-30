@@ -55,7 +55,7 @@ resource "aws_iam_role_policy_attachment" "ecr_policy_attachment" {
 
 
 
-resource "aws_ecs_task_definition" "fotopie_task" {
+resource "aws_ecs_task_definition" "fotopie_task_dev" {
   family = var.task_definition_family_name
   requires_compatibilities = var.irequires_compatibilities
   execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
@@ -87,10 +87,10 @@ resource "aws_ecs_task_definition" "fotopie_task" {
   }
 }
 
-resource "aws_ecs_service" "fotopie_service" {
+resource "aws_ecs_service" "fotopie_service_dev" {
   name            = var.ecs_service_name
   cluster         = module.ecs.cluster_id
-  task_definition = aws_ecs_task_definition.fotopie_task.arn
+  task_definition = aws_ecs_task_definition.fotopie_task_dev.arn
   launch_type     = var.service_launch_type
   desired_count   = var.desired_tasks
   force_new_deployment = true

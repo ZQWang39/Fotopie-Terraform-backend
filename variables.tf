@@ -75,7 +75,7 @@ variable "app_port" {
 
 variable "ecs_service_name" {
   description = "ECS service name"
-  default     = "fotopie_service"
+  default     = "fotopie_service_dev"
   
 }
 
@@ -93,7 +93,7 @@ variable "desired_tasks" {
 
 variable "container_name" {
   description = "container name of the image"
-  default     = "fotopie-backend"
+  default     = "fotopie-backend-dev"
   
 }
 
