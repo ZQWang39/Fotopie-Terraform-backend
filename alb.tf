@@ -1,5 +1,5 @@
 resource "aws_lb" "fotopie_alb" {
-  name               = "fotopieAlb"
+  name               = "fotopieAlb-dev"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [module.alb-security-group.security_group_id]
@@ -12,7 +12,7 @@ resource "aws_lb" "fotopie_alb" {
 }
 
 resource "aws_lb_target_group" "fotopie_target_group" {
-  name        = "fotopieTargetGroup"
+  name        = "fotopieTargetGroup-dev"
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
@@ -32,7 +32,7 @@ resource "aws_lb_target_group" "fotopie_target_group" {
   }
 }
 
-resource "aws_lb_listener" "front_end" {
+resource "aws_lb_listener" "front_end_dev" {
   load_balancer_arn = aws_lb.fotopie_alb.arn
   port              = 80
   protocol          = "HTTP"

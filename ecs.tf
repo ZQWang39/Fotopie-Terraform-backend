@@ -9,7 +9,7 @@ module "ecs" {
 }
 
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name = "ecs-task-execution-role"
+  name = "ecs-task-execution-role-dev"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -25,7 +25,7 @@ resource "aws_iam_role" "ecs_task_execution_role" {
 }
 
 resource "aws_iam_policy" "ecr_policy" {
-  name = "ecr-policy"
+  name = "ecr-policy-dev"
 
   policy = jsonencode({
     Version = "2012-10-17"

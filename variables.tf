@@ -31,25 +31,25 @@ variable "fotopie_ecs_service_sg" {
 
 variable "cluster_name" {
     description = "ECS cluster name"
-    default = "FotoPie-with-Fargate"
+    default = "FotoPie-with-Fargate-dev"
   
 }
 
 variable "task_definition_family_name" {
     description = "task definition name"
-    default = "fotopie_backend_task"
+    default = "fotopie_backend_task_dev"
   
 }
 
 variable "image_name" {
     description = "Image name for the task definition to run in this ECS cluster"
-    default = "fotopie-backend"
+    default = "fotopie-backend-dev"
   
 }
 
 variable "image_uri" {
     description = "arn for the image"
-    default = "123436089261.dkr.ecr.ap-southeast-2.amazonaws.com/fotopie:latest"
+    default = "123436089261.dkr.ecr.ap-southeast-2.amazonaws.com/fotopie-dev:latest"
 }
 
 variable "irequires_compatibilities" {

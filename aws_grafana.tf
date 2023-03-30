@@ -3,7 +3,7 @@ module "managed-service-grafana" {
   version = "1.8.0"
 
     # Workspace
-  name                      = "FotoPie-Backend"
+  name                      = "FotoPie-Backend-Dev"
   description               = "Monitor FotoPie backend"
   account_access_type       = "CURRENT_ACCOUNT"
   authentication_providers  = ["AWS_SSO"]
