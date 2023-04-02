@@ -51,6 +51,12 @@ variable "fotopie_ecs_service_sg" {
     default = "fotopie_ecs_service_sg"
 }
 
+variable "grafana-security-group" {
+   description = "Security group name for AWS managed Grafana"
+    default = "fotopie_grafana_sg_uat"
+   
+}
+
 variable "cluster_name" {
     description = "ECS cluster name"
     default = "FotoPie-with-Fargate-uat"
@@ -145,6 +151,11 @@ variable "grafana_name" {
 variable "my_ip_address" {
   description = "My local IP adress"
   default     = "149.167.135.253/32"
+}
+
+variable "fotopieAlb_name" {
+  description = "Name of FotoPie ALB"
+  default     = "ALB-name"
 }
 
 variable "fotopie_target_group_name" {

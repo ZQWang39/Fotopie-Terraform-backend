@@ -1,5 +1,5 @@
 resource "aws_lb" "fotopie_alb" {
-  name               = "fotopieAlb-dev"
+  name               = var.fotopieAlb_name
   internal           = false
   load_balancer_type = "application"
   security_groups    = [module.alb-security-group.security_group_id]

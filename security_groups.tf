@@ -68,7 +68,7 @@ module "grafana-security-group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.17.1"
   
-  name        = "grafana-security-group-dev"
+  name        = var.grafana-security-group
   description = "open port 80/443 for inbound traffic"
   vpc_id      = module.vpc.vpc_id
 
