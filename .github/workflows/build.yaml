@@ -35,7 +35,7 @@ jobs:
     - name: Terraform provision AWS resources
       run: |
          terraform init
-         terraform apply --auto-approve
+         terraform apply -var-file backend-uat.tfvars --auto-approve
   
   de-provision:
     if: ${{ inputs.infrastructure == 'deprovision' }} 
