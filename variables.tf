@@ -40,15 +40,7 @@ variable "ecs-service-security-group" {
   default = "ecs-sg-uat"
   
 }
-variable "terraform_state_file" {
-  description = "Terraform state file name"
-  default = "terraform-uat.tfstate"
-  
-}
-variable "s3_region" {
-  description = "Region of S3 resource"
-  default = "ap-southeast-2"
-}
+
 variable "fotopie_alb_sg" {
     description = "Security group name for FotoPie backend ALB"
     default = "fotopie_alb_sg"

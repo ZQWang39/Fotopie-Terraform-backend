@@ -3,7 +3,6 @@ fotopie_vpc = "fotopie-vpc-uat"
 single_nat_gateway = ture
 application-loadbalancer-security-group = "alb-sg-uat"
 ecs-service-security-group = "ecs-sg-uat"
-terraform_state_file = "terraform-uat.tfstate"
 cluster_name = "FotoPie-with-Fargate-uat"
 ecs-task-execution-role = "ecs-task-execution-role-uat"
 ecr-policy-name = "ecr-policy-uat"
