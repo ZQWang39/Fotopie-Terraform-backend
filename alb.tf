@@ -7,12 +7,12 @@ resource "aws_lb" "fotopie_alb" {
 
   enable_deletion_protection = true
   tags = {
-    Environment = "dev"
+    Environment = var.environment
   }
 }
 
 resource "aws_lb_target_group" "fotopie_target_group" {
-  name        = "fotopieTargetGroup-dev"
+  name        = var.fotopie_target_group_name
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
@@ -28,11 +28,11 @@ resource "aws_lb_target_group" "fotopie_target_group" {
     interval            = 20
   }
   tags = {
-    Environment = "dev"
+    Environment = var.environment
   }
 }
 
-resource "aws_lb_listener" "front_end_dev" {
+resource "aws_lb_listener" "front_end" {
   load_balancer_arn = aws_lb.fotopie_alb.arn
   port              = 80
   protocol          = "HTTP"
@@ -42,6 +42,6 @@ resource "aws_lb_listener" "front_end_dev" {
     target_group_arn = aws_lb_target_group.fotopie_target_group.arn
   }
   tags = {
-    Environment = "dev"
+    Environment = var.environment
   }
 }

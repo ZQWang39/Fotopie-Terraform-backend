@@ -4,12 +4,12 @@ module "ecs" {
 
   cluster_name = var.cluster_name
   tags = {
-    Environment = "dev"
+    Environment = var.environment
   }
 }
 
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name = "ecs-task-execution-role-dev"
+  name = var.ecs-task-execution-role
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -25,7 +25,7 @@ resource "aws_iam_role" "ecs_task_execution_role" {
 }
 
 resource "aws_iam_policy" "ecr_policy" {
-  name = "ecr-policy-dev"
+  name = var.ecr-policy-name
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -55,7 +55,7 @@ resource "aws_iam_role_policy_attachment" "ecr_policy_attachment" {
 
 
 
-resource "aws_ecs_task_definition" "fotopie_task_dev" {
+resource "aws_ecs_task_definition" "fotopie_task" {
   family = var.task_definition_family_name
   requires_compatibilities = var.irequires_compatibilities
   execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
@@ -83,14 +83,14 @@ resource "aws_ecs_task_definition" "fotopie_task_dev" {
     cpu_architecture        = "X86_64"
   }
   tags = {
-    Environment = "dev"
+    Environment = var.environment
   }
 }
 
 resource "aws_ecs_service" "fotopie_service_dev" {
   name            = var.ecs_service_name
   cluster         = module.ecs.cluster_id
-  task_definition = aws_ecs_task_definition.fotopie_task_dev.arn
+  task_definition = aws_ecs_task_definition.fotopie_task.arn
   launch_type     = var.service_launch_type
   desired_count   = var.desired_tasks
   force_new_deployment = true
@@ -107,7 +107,7 @@ resource "aws_ecs_service" "fotopie_service_dev" {
     container_port   = var.container_port
   }
   tags = {
-    Environment = "dev"
+    Environment = var.environment
   }
 
 }

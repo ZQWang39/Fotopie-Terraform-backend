@@ -3,7 +3,7 @@ module "alb-security-group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.17.1"
   
-  name        = "application-loadbalancer-security-group-dev"
+  name        = var.application-loadbalancer-security-group
   description = "Inbound traffic port 80 from anywhere"
   vpc_id      = module.vpc.vpc_id
 
@@ -27,7 +27,7 @@ module "alb-security-group" {
    }
   ]
   tags = {
-    Environment = "dev"
+    Environment = var.environment
   }
 }
 
@@ -36,7 +36,7 @@ module "ecs-security-group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.17.1"
   
-  name        = "ecs-service-security-group-dev"
+  name        = var.ecs-service-security-group
   description = "Inbound traffic from ApplicationLoadBalancerSG"
   vpc_id      = module.vpc.vpc_id
       
@@ -60,7 +60,7 @@ module "ecs-security-group" {
    }
   ]
   tags = {
-    Environment = "dev"
+    Environment = var.environment
   }
 }
 
