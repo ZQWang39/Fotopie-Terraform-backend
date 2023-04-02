@@ -1,6 +1,6 @@
 environment = "uat"
 fotopie_vpc = "fotopie-vpc-uat"
-single_nat_gateway = ture
+single_nat_gateway = true
 application-loadbalancer-security-group = "alb-sg-uat"
 ecs-service-security-group = "ecs-sg-uat"
 cluster_name = "FotoPie-with-Fargate-uat"
