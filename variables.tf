@@ -1,9 +1,9 @@
 
-ariable "environment" {
+variable "environment" {
     description = "define the environment for the infrastructure"
 }
 
-ariable "fotopie_vpc" {
+variable "fotopie_vpc" {
     description = "VPC name for FotoPie dev environment"
     default = "fotopie-vpc-dev"
 }
