@@ -34,7 +34,7 @@ jobs:
     
     - name: Terraform provision AWS resources
       run: |
-         terraform init -backend-config=backend_uat.tf
+         terraform init -backend-config=backend_uat.conf
          terraform apply -var-file backend-uat.tfvars --auto-approve
   
   de-provision:
