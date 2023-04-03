@@ -22,7 +22,7 @@ on:
 
 jobs:
   uat-infra-provision: 
-    if: ${{ github.event.inputs.infrastructure == 'provision' && github.event.inputs.environment == 'uat' }}
+    if: ${{ inputs.infrastructure == 'provision' && inputs.environment == 'uat' }} 
     runs-on: ubuntu-latest
 
     steps:
@@ -47,7 +47,7 @@ jobs:
          terraform apply -var-file backend-uat.tfvars --auto-approve
 
   prod-infra-provision: 
-    if: ${{ inputs.infrastructure == 'provision' && inputs.environment == 'prod' }} 
+    if: ${{ inputs.infrastructure == 'provision' }} && ${{ inputs.environment == 'prod' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -96,7 +96,7 @@ jobs:
         terraform init -backend-config=backend_uat.conf
         terraform destroy -var-file backend-uat.tfvars --auto-approve
 
-  uat-infra-deprovision:
+  prod-infra-deprovision:
     if: ${{ inputs.infrastructure == 'deprovision' && inputs.environment == 'prod'}} 
     runs-on: ubuntu-latest
 
