@@ -13,7 +13,7 @@ on:
       environment:
          description: 'Choose the environment to provision or de-provision'
          required: true
-         type: multi-choice
+         type: multiselect
          options:
          - uat
          - prod
