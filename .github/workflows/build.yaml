@@ -60,4 +60,4 @@ jobs:
     - name: Terraform deprovision AWS resources
       run: |
         terraform init -backend-config=backend_uat.conf
-        terraform destroy --auto-approve
+        terraform destroy -var-file backend-uat.tfvars --auto-approve
