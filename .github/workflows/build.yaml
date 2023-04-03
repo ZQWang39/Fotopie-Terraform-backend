@@ -10,14 +10,14 @@ on:
          options:
          - provision
          - deprovision
-      environment:
+      environment_1:
          description: 'Choose the environment to provision or de-provision'
          required: true
          type: choice
          options:
          - uat
          - prod
-      environment:
+      environment_2:
          description: 'Choose the environment to provision or de-provision'
          required: false
          type: choice
