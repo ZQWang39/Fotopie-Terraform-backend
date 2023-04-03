@@ -17,6 +17,14 @@ on:
          options:
          - uat
          - prod
+      environment:
+        description: 'Choose the environment to provision or de-provision'
+        required: false
+        type: choice
+        options:
+        - uat
+        - prod
+        
  
 
 jobs:
