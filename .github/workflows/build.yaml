@@ -57,7 +57,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.FOTOPIE_AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
     
-    - name: Terraform provision AWS resources
+    - name: Terraform deprovision AWS resources
       run: |
-        terraform init -backend-config=backend_uat.conf
+        
         terraform destroy --auto-approve
