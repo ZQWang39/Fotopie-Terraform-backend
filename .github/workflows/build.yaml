@@ -22,7 +22,7 @@ on:
 
 jobs:
   uat-infra-provision: 
-    if: ${{ inputs.infrastructure == 'provision' && inputs.environment == 'uat' }} 
+    if: ${{ github.event.inputs.infrastructure == 'provision' && github.event.inputs.environment == 'uat' }}
     runs-on: ubuntu-latest
 
     steps:
