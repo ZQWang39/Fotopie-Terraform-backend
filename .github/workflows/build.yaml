@@ -71,30 +71,30 @@ jobs:
          terraform init -backend-config=backend_prod.conf
          terraform apply -var-file backend-prod.tfvars --auto-approve
   
-  # uat-infra-deprovision:
-  #   if: ${{ inputs.infrastructure == 'deprovision' }} && ${{ inputs.environment == 'uat' }}
-  #   runs-on: ubuntu-latest
+  uat-infra-deprovision:
+    if: ${{ github.event.inputs.infrastructure == 'deprovision' && github.event.inputs.environment == 'uat' }}
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #   - name: Checkout code
-  #     uses: actions/checkout@v2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-  #   - name: Set up Terraform
-  #     uses: hashicorp/setup-terraform@v1
-  #     with:
-  #       terraform_version: '1.1.0'
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: '1.1.0'
 
-  #   - name: Configure AWS credentials
-  #     uses: aws-actions/configure-aws-credentials@v1
-  #     with:
-  #       aws-access-key-id: ${{ secrets.FOTOPIE_AWS_ACCESS_KEY_ID }}
-  #       aws-secret-access-key: ${{ secrets.FOTOPIE_AWS_SECRET_ACCESS_KEY }}
-  #       aws-region: ${{ secrets.AWS_REGION }}
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.FOTOPIE_AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.FOTOPIE_AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
     
-  #   - name: Terraform deprovision AWS resources
-  #     run: |
-  #       terraform init -backend-config=backend_uat.conf
-  #       terraform destroy -var-file backend-uat.tfvars --auto-approve
+    - name: Terraform deprovision AWS resources
+      run: |
+        terraform init -backend-config=backend_uat.conf
+        terraform destroy -var-file backend-uat.tfvars --auto-approve
 
   prod-infra-deprovision:
     if: ${{ github.event.inputs.infrastructure == 'deprovision' && github.event.inputs.environment == 'prod' }}
