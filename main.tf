@@ -8,7 +8,7 @@ terraform {
   }
   backend "s3" {
         bucket = "fotopie-statefile-backend"
-        key = "terraform-uat.tfstate"
+        key = "terraform-${terraform.workspace}.tfstate"
         region = "ap-southeast-2"
     }
 }
