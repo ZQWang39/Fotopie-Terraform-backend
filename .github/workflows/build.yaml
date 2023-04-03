@@ -13,16 +13,10 @@ on:
       environment:
          description: 'Choose the environment to provision or de-provision'
          required: true
-        #  type: choice
-        #  options:
-        #  - uat
-        #  - prod
-         checkboxes:
-          - value: uat
-            label: 'UAT'
-          - value: prod
-            label: 'PRODUCTION'
-
+         type: choice
+         options:
+         - uat
+         - prod
  
 
 jobs:
