@@ -87,7 +87,7 @@ resource "aws_ecs_task_definition" "fotopie_task" {
   }
 }
 
-resource "aws_ecs_service" "fotopie_service_dev" {
+resource "aws_ecs_service" "fotopie_service" {
   name            = var.ecs_service_name
   cluster         = module.ecs.cluster_id
   task_definition = aws_ecs_task_definition.fotopie_task.arn
@@ -96,13 +96,13 @@ resource "aws_ecs_service" "fotopie_service_dev" {
   force_new_deployment = true
 
   network_configuration {
-    security_groups  = [module.ecs-security-group.security_group_id]
-    subnets          = module.vpc.public_subnets
+    security_groups  = [var.ecs_security_group_id]
+    subnets          = var.private_subnets
     assign_public_ip = true
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.fotopie_target_group.arn
+    target_group_arn = var.fotopie_target_group_arn
     container_name   = var.container_name
     container_port   = var.container_port
   }

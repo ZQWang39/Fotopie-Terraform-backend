@@ -10,8 +10,8 @@ module "managed-service-grafana" {
   permission_type           = "SERVICE_MANAGED"
   associate_license         = "false"
   vpc_configuration         = {
-        security_group_ids = [module.grafana-security-group.security_group_id]
-        subnet_ids         = module.vpc.private_subnets
+        security_group_ids = [var.grafana_security_group_id]
+        subnet_ids         = var.private_subnets
   }
   data_sources              = ["AMAZON_OPENSEARCH_SERVICE", "ATHENA", "CLOUDWATCH", "REDSHIFT", "SITEWISE", "TIMESTREAM", "PROMETHEUS", "XRAY"]
   notification_destinations = ["SNS"]

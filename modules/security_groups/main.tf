@@ -5,7 +5,7 @@ module "alb-security-group" {
   
   name        = var.application-loadbalancer-security-group
   description = "Inbound traffic port 80 from anywhere"
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = var.vpc_id
 
   ingress_with_cidr_blocks = [
     {
@@ -38,7 +38,7 @@ module "ecs-security-group" {
   
   name        = var.ecs-service-security-group
   description = "Inbound traffic from ApplicationLoadBalancerSG"
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = var.vpc_id
       
   ingress_with_source_security_group_id = [
     {
@@ -70,7 +70,7 @@ module "grafana-security-group" {
   
   name        = var.grafana-security-group
   description = "open port 80/443 for inbound traffic"
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = var.vpc_id
 
   ingress_with_cidr_blocks = [
     {
@@ -107,6 +107,6 @@ module "grafana-security-group" {
    }
   ]
   tags = {
-    Environment = "dev"
+    Environment = var.environment
   }
 }

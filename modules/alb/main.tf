@@ -2,8 +2,8 @@ resource "aws_lb" "fotopie_alb" {
   name               = var.fotopieAlb_name
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [module.alb-security-group.security_group_id]
-  subnets            = module.vpc.public_subnets
+  security_groups    = [var.alb_security_group_id]
+  subnets            = var.public_subnets
 
   enable_deletion_protection = false
   tags = {
@@ -16,7 +16,7 @@ resource "aws_lb_target_group" "fotopie_target_group" {
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = var.vpc_id
 
   health_check {
     healthy_threshold   = 2
