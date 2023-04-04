@@ -56,7 +56,7 @@ module "FotoPie_ecs_cluster" {
   service_launch_type = var.service_launch_type
   desired_tasks = var.desired_tasks
   ecs_security_group_id = module.FotoPie_sg.ecs_security_group_id
-  private_subnets = module.vpc.public_subnets
+  private_subnets = module.vpc.private_subnets
   fotopie_target_group_arn = module.FotoPie_alb.fotopie_target_group_arn
   container_name = var.container_name
   container_port = var.container_port
@@ -66,7 +66,7 @@ module "FotoPie_alb" {
   source = "./modules/alb"
   fotopieAlb_name = var.fotopieAlb_name
   alb_security_group_id = module.FotoPie_sg.alb_security_group_id
-  public_subnets = module.vpc.private_subnets
+  public_subnets = module.vpc.public_subnets
   environment = var.environment
   fotopie_target_group_name = var.fotopie_target_group_name
   vpc_id = module.vpc.vpc_id
