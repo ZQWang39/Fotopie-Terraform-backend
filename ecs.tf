@@ -97,7 +97,7 @@ resource "aws_ecs_service" "fotopie_service_dev" {
 
   network_configuration {
     security_groups  = [module.ecs-security-group.security_group_id]
-    subnets          = module.vpc.public_subnets
+    subnets          = module.vpc.private_subnets
     assign_public_ip = true
   }
 
