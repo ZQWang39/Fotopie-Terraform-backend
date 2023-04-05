@@ -62,13 +62,10 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.FOTOPIE_AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.FOTOPIE_AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ secrets.AWS_REGION }}
- 
-    - name: My Action
-      uses: my-org/my-action@v1
-      working-directory: applications
+        aws-region: ${{ secrets.AWS_REGION }}  
     
     - name: Terraform provision AWS resources
+      working-directory: applications
       run: |
          terraform init -backend-config=backend_prod.conf
          terraform apply -var-file backend-prod.tfvars --auto-approve
