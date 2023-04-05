@@ -30,7 +30,7 @@ module "vpc" {
 }
 
 module "FotoPie_sg" {
-  source = "./modules/security_groups"
+  source = "../modules/security_groups"
   application-loadbalancer-security-group = var.application-loadbalancer-security-group
   vpc_id = module.vpc.vpc_id
   environment = var.environment
@@ -40,7 +40,7 @@ module "FotoPie_sg" {
 }
 
 module "FotoPie_ecs_cluster" {
-  source = "./modules/ecs"
+  source = "../modules/ecs"
   cluster_name = var.cluster_name
   environment = var.environment
   ecs-task-execution-role = var.ecs-task-execution-role
@@ -63,7 +63,7 @@ module "FotoPie_ecs_cluster" {
 }
 
 module "FotoPie_alb" {
-  source = "./modules/alb"
+  source = "../modules/alb"
   fotopieAlb_name = var.fotopieAlb_name
   alb_security_group_id = module.FotoPie_sg.alb_security_group_id
   public_subnets = module.vpc.public_subnets
@@ -74,7 +74,7 @@ module "FotoPie_alb" {
 }
 
 module "FotoPie_aws_grafana" {
-  source = "./modules/aws_grafana"
+  source = "../modules/aws_grafana"
   grafana_name = var.grafana_name
   grafana_security_group_id = module.FotoPie_sg.grafana_security_group_id
   private_subnets = module.vpc.private_subnets
