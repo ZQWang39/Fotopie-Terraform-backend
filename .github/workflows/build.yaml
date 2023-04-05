@@ -66,8 +66,8 @@ jobs:
     
     - name: Terraform provision AWS resources
       run: |
-         terraform init -backend-config=applications/backend_prod.conf
-         terraform apply -var-file applications/backend-prod.tfvars --auto-approve
+         terraform init -backend-config=applications/backend_prod.conf -backend-config=applications/backend.tf
+         terraform apply -var-file=applications/backend-prod.tfvars --auto-approve
   
   uat-infra-deprovision:
     if: ${{ github.event.inputs.infrastructure == 'deprovision' && github.event.inputs.environment == 'uat' }}
