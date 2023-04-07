@@ -11,6 +11,22 @@ resource "aws_lb" "fotopie_alb" {
   }
 }
 
+# //Use data resource to get `zone_id`
+# data "aws_route53_zone" "fotopie" {
+#   name         = "uat.fotopie.net"
+# }
+
+# resource "aws_route53_record" "attacheAlbDNS" {
+#   zone_id = data.aws_route53_zone.fotopie.zone_id
+#   name    = "api.${data.aws_route53_zone.fotopie.name}"
+#   type    = "A"
+#   alias {
+#     name                   = aws_lb.fotopie_alb.dns_name
+#     zone_id                = aws_lb.fotopie_alb.zone_id
+#     evaluate_target_health = true
+#   }
+# }  
+
 resource "aws_lb_target_group" "fotopie_target_group" {
   name        = var.fotopie_target_group_name
   port        = 80
